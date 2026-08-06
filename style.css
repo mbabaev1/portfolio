@@ -424,3 +424,24 @@ section {
     max-width: 1000px;
     margin: 0 auto;
 }
+
+.project-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+
+.project-links a {
+    padding: 10px 20px;
+    background-color: #8a01b8;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+
+.project-links a:hover {
+    background-color: #a900e0;
+}
