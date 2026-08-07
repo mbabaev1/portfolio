@@ -276,6 +276,7 @@ h1 {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        position: relative;
     }
 
 
@@ -298,6 +299,13 @@ h1 {
 
     .menu.active {
         display: flex;
+        position: absolute;
+        top: 80px;
+        right: 20px;
+        background: #2a2a2a;
+        padding: 20px;
+        border-radius: 12px;
+        flex-direction: column;
     }
 
 
