@@ -262,6 +262,9 @@ h1 {
         gap: 20px;
     }
 
+    .burger {
+        display: block;
+    }
 
     .menu {
         display: flex;
@@ -269,6 +272,16 @@ h1 {
         gap: 15px;
         width: 100%;
         align-items: center;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        gap: 20px;
     }
 
     .menu a {
@@ -297,19 +310,10 @@ h1 {
         font-size: 36px;
     }
 
-    .burger {
-        display: block;
-    }
-
     .menu {
         display: none;
         flex-direction: column;
         gap: 20px;
-    }
-    
-    
-    .menu.active {
-        display: flex;
     }
 
 }
