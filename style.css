@@ -297,6 +297,21 @@ h1 {
         font-size: 36px;
     }
 
+    .burger {
+        display: block;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    
+    .menu.active {
+        display: flex;
+    }
+
 }
 
 .project-card img {
@@ -444,4 +459,18 @@ section {
 
 .project-links a:hover {
     background-color: #a900e0;
+}
+
+.burger {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.burger.open {
+    transform: rotate(90deg);
 }
