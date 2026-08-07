@@ -255,6 +255,20 @@ h1 {
     color: #8a01b8;
 }
 
+.burger {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.burger.open {
+    transform: rotate(90deg);
+}
+
 @media (max-width: 768px) {
 
     .navbar {
@@ -305,6 +319,15 @@ h1 {
 
     h1 {
         font-size: 36px;
+    }
+
+    .profession {
+        font-size:18px;
+    }
+    
+    
+    .description {
+        font-size:16px;
     }
 
 }
