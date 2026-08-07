@@ -469,3 +469,7 @@ section {
 .burger.open {
     transform: rotate(90deg);
 }
+
+body {
+    border: 10px solid red;
+}
