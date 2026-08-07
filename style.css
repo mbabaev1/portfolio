@@ -509,3 +509,12 @@ body {
     }
 
 }
+
+.burger {
+    display: block !important;
+    background: red;
+    color: white;
+    font-size: 40px;
+    position: relative;
+    z-index: 999;
+}
