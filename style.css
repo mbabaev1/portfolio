@@ -118,6 +118,7 @@ h1 {
 .skills-container {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 20px;
 }
 
@@ -130,7 +131,7 @@ h1 {
     animation: fadeUp 0.8s ease;
     opacity: 0;
     animation-fill-mode: forwards;
-
+    text-align: center;
 }
 
 .skill-card:nth-child(1) {
@@ -323,6 +324,9 @@ h1 {
         flex-direction: column;
     }
 
+    .project-links {
+        justify-content: center;
+    }
 
     .hero {
         padding: 50px 20px;
@@ -473,11 +477,11 @@ section {
 .project-links {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 15px;
     margin-top: 20px;
     flex-wrap: wrap;
 }
-
 
 .project-links a {
     padding: 10px 20px;
