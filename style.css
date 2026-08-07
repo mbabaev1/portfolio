@@ -283,6 +283,9 @@ h1 {
         display: block;
     }
 
+    .burger {
+        padding: 5px;
+    }
 
     .menu {
         display: none;
