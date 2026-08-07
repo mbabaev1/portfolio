@@ -481,3 +481,31 @@ body {
         font-size: 50px;
     }
 }
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+
+    .burger {
+        display: block !important;
+    }
+
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+
+
+    .menu.active {
+        display: flex;
+    }
+
+}
