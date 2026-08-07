@@ -483,13 +483,3 @@ section {
 .burger.open {
     transform: rotate(90deg);
 }
-
-.burger {
-    display: block !important;
-    color: red !important;
-    background: white !important;
-    font-size: 50px !important;
-    position: relative;
-    z-index: 9999;
-}
-
