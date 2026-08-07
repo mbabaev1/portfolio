@@ -290,11 +290,20 @@ h1 {
     }
 
     .menu {
-        display: none;
+        position: fixed;
+        top: 90px;
+        right: -100%;
+        width: 260px;
+        background: #2a2a2a;
+        display: flex;
         flex-direction: column;
-        gap: 20px;
-        width: 100%;
-        text-align: center;
+        align-items: center;
+        gap: 30px;
+        padding: 40px 20px;
+        border-radius: 20px 0 0 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        transition: 0.4s ease;
+        z-index: 1000;
     }
 
 
@@ -307,6 +316,7 @@ h1 {
         padding: 20px;
         border-radius: 12px;
         flex-direction: column;
+        right: 0;
     }
 
 
