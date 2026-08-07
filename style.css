@@ -258,38 +258,32 @@ h1 {
 @media (max-width: 768px) {
 
     .navbar {
-        flex-direction: column;
-        gap: 20px;
+        flex-direction: row;
+        justify-content: space-between;
     }
+
 
     .burger {
         display: block;
     }
 
-    .menu {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        width: 100%;
-        align-items: center;
-    }
-
-    .menu.active {
-        display: flex;
-    }
 
     .menu {
         display: none;
         flex-direction: column;
         gap: 20px;
+        width: 100%;
+        align-items: center;
     }
+
+
+    .menu.active {
+        display: flex;
+    }
+
 
     .menu a {
         margin-left: 0;
-    }
-
-    .hero h1 {
-        font-size: 36px;
     }
 
 
@@ -297,23 +291,9 @@ h1 {
         flex-direction: column;
     }
 
+
     .projects-container {
         flex-direction: column;
-    }
-
-    .hero {
-        padding: 50px 20px;
-    }
-    
-    
-    h1 {
-        font-size: 36px;
-    }
-
-    .menu {
-        display: none;
-        flex-direction: column;
-        gap: 20px;
     }
 
 }
