@@ -472,8 +472,10 @@ section {
 
 .project-links {
     display: flex;
+    justify-content: center;
     gap: 15px;
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 
 
