@@ -309,14 +309,6 @@ h1 {
 
 
     .menu.active {
-        display: flex;
-        position: absolute;
-        top: 80px;
-        right: 20px;
-        background: #2a2a2a;
-        padding: 20px;
-        border-radius: 12px;
-        flex-direction: column;
         right: 0;
     }
 
@@ -508,6 +500,3 @@ section {
     background-color: #a900e0;
 }
 
-.burger.open {
-    transform: rotate(90deg);
-}
