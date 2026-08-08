@@ -292,24 +292,29 @@ h1 {
     .menu {
         position: fixed;
         top: 120px;
-        right: -100%;
-        width: 220px;
+        left: 50%;
+        transform: translateX(-50%) scale(0.9);
+        width: 80%;
+        max-width: 320px;
         background: #2a2a2a;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
-        padding: 20px;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        gap: 25px;
+        padding: 30px 20px;
+        border-radius: 25px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        opacity: 0;
+        pointer-events: none;
         transition: 0.3s ease;
         z-index: 1000;
-        max-height: 300px;
     }
 
 
     .menu.active {
-        right: 15px;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(-50%) scale(1);
     }
 
 
