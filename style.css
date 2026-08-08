@@ -291,16 +291,16 @@ h1 {
 
     .menu {
         position: fixed;
-        top: 90px;
+        top: 85px;
         right: -100%;
-        width: 260px;
+        width: 230px;
         background: #2a2a2a;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 20px;
-        padding: 25px 20px;
-        border-radius: 20px 0 0 20px;
+        gap: 15px;
+        padding: 20px;
+        border-radius: 0 0 20px 20px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         transition: 0.35s ease-in-out;
         z-index: 1000;
@@ -315,6 +315,7 @@ h1 {
 
     .menu a {
         margin-left: 0;
+        font-size: 18;
     }
 
 
