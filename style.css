@@ -291,7 +291,7 @@ h1 {
 
     .menu {
         position: fixed;
-        top: 70px;
+        top: 100px;
         right: -100%;
         width: 220px;
         background: #2a2a2a;
@@ -302,14 +302,14 @@ h1 {
         padding: 20px;
         border-radius: 20px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        transition: 0.35s ease-in-out;
+        transition: 0.3s ease;
         z-index: 1000;
         max-height: 300px;
     }
 
 
     .menu.active {
-        right: 0px;
+        right: 20px;
     }
 
 
