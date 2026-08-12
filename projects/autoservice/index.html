@@ -5,116 +5,548 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Автосервис</title>
+    <title>DrivePro | Автосервис</title>
+    <meta name="description" content="Современный автосервис: диагностика, техническое обслуживание и ремонт автомобилей.">
 
     <style>
 
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
             font-family: Arial, sans-serif;
-            background: #1e1e1e;
+            background: #111;
             color: white;
-            text-align: center;
-        }
-
-        header {
-            background: #8a01b8;
-            padding: 60px 20px;
-        }
-
-        h1 {
-            font-size: 48px;
-        }
-
-        p {
-            color: #ccc;
-            font-size: 18px;
             line-height: 1.6;
         }
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 40px 20px;
+        /* ШАПКА */
+
+        .navbar {
+            width: 100%;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #111;
         }
 
-        .card {
-            background: #2a2a2a;
-            padding: 30px;
-            border-radius: 15px;
-            margin-top: 30px;
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff5a1f;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #ff5a1f;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 82vh;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.75),
+                    rgba(0, 0, 0, 0.75)
+                ),
+                url("../../images/autoservice.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+
+            padding: 60px 8%;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-small {
+            color: #ff5a1f;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: #ccc;
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         .button {
             display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background: #8a01b8;
+            padding: 14px 28px;
+            background: #ff5a1f;
             color: white;
             text-decoration: none;
             border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
         }
 
         .button:hover {
-            background: #a900e0;
+            transform: translateY(-3px);
+            background: #ff713f;
+        }
+
+        .button-secondary {
+            background: transparent;
+            border: 1px solid #555;
+        }
+
+        .button-secondary:hover {
+            background: white;
+            color: #111;
+        }
+
+        /* СЕКЦИИ */
+
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: #ff5a1f;
+            font-weight: bold;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-top: 8px;
+        }
+
+        .section-title p {
+            color: #aaa;
+            max-width: 600px;
+            margin: 10px auto 0;
+        }
+
+        /* УСЛУГИ */
+
+        .services {
+            background: #171717;
+        }
+
+        .services-grid {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .service-card {
+            background: #222;
+            padding: 35px 25px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #ff5a1f;
+        }
+
+        .service-icon {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: #aaa;
+        }
+
+        /* ПРЕИМУЩЕСТВА */
+
+        .advantages {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .advantages img {
+            width: 100%;
+            border-radius: 18px;
+            height: 420px;
+            object-fit: cover;
+        }
+
+        .advantages-content h2 {
+            font-size: 40px;
+            margin-bottom: 25px;
+        }
+
+        .advantage {
+            margin-bottom: 22px;
+        }
+
+        .advantage h3 {
+            margin-bottom: 5px;
+            color: #ff5a1f;
+        }
+
+        .advantage p {
+            color: #aaa;
+        }
+
+        /* CTA */
+
+        .cta {
+            margin: 0 8% 90px;
+            padding: 60px 30px;
+
+            text-align: center;
+
+            background: linear-gradient(135deg, #ff5a1f, #8f2300);
+            border-radius: 20px;
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            margin-bottom: 25px;
+            color: #f1f1f1;
+        }
+
+        .cta .button {
+            background: white;
+            color: #111;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: #0b0b0b;
+            color: #777;
+        }
+
+        footer a {
+            color: #ff5a1f;
+            text-decoration: none;
+        }
+
+        /* МОБИЛЬНАЯ ВЕРСИЯ */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                padding: 18px 20px;
+            }
+
+            .navbar-links {
+                display: none;
+            }
+
+            .hero {
+                min-height: 75vh;
+                padding: 50px 25px;
+            }
+
+            .hero h1 {
+                font-size: 39px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            section {
+                padding: 65px 20px;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .advantages {
+                grid-template-columns: 1fr;
+            }
+
+            .advantages img {
+                height: 280px;
+            }
+
+            .advantages-content h2 {
+                font-size: 32px;
+            }
+
+            .cta {
+                margin: 0 20px 60px;
+                padding: 45px 20px;
+            }
+
+            .cta h2 {
+                font-size: 30px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .button {
+                text-align: center;
+            }
         }
 
     </style>
-
 </head>
-
 
 <body>
 
+    <nav class="navbar">
 
-<header>
+        <div class="logo">
+            Drive<span>Pro</span>
+        </div>
 
-    <h1>Автосервис</h1>
+        <div class="navbar-links">
+            <a href="#services">Услуги</a>
+            <a href="#advantages">Почему мы</a>
+            <a href="#contacts">Записаться</a>
+        </div>
 
-    <p>
-        Современный сайт для автомобильного сервиса
-    </p>
-
-</header>
-
-
-
-<div class="container">
+    </nav>
 
 
-    <div class="card">
+    <header class="hero">
 
-        <h2>Наши услуги</h2>
+        <div class="hero-content">
+
+            <div class="hero-small">
+                Современный автосервис
+            </div>
+
+            <h1>
+                Ремонт автомобиля без лишних проблем
+            </h1>
+
+            <p>
+                Диагностика, техническое обслуживание и ремонт.
+                Понятный процесс, аккуратная работа и удобная запись.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a class="button" href="#contacts">
+                    Записаться на сервис
+                </a>
+
+                <a class="button button-secondary" href="#services">
+                    Наши услуги
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <section class="services" id="services">
+
+        <div class="section-title">
+
+            <span>НАШИ УСЛУГИ</span>
+
+            <h2>
+                Всё необходимое для вашего автомобиля
+            </h2>
+
+            <p>
+                Основные направления обслуживания собраны в одном месте.
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+            <div class="service-card">
+
+                <div class="service-icon">🔍</div>
+
+                <h3>Диагностика</h3>
+
+                <p>
+                    Проверка основных систем автомобиля и поиск неисправностей.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">🔧</div>
+
+                <h3>Ремонт</h3>
+
+                <p>
+                    Ремонт двигателя, ходовой части и других узлов автомобиля.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">🛢️</div>
+
+                <h3>Техническое обслуживание</h3>
+
+                <p>
+                    Замена масла, фильтров и плановое обслуживание автомобиля.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="advantages">
+
+        <div class="advantages">
+
+            <img
+                src="../../images/autoservice.jpg"
+                alt="Работа в автосервисе"
+            >
+
+
+            <div class="advantages-content">
+
+                <h2>
+                    Почему выбирают DrivePro
+                </h2>
+
+
+                <div class="advantage">
+
+                    <h3>✓ Понятный сервис</h3>
+
+                    <p>
+                        Объясняем проблему и необходимые работы понятным языком.
+                    </p>
+
+                </div>
+
+
+                <div class="advantage">
+
+                    <h3>✓ Современный подход</h3>
+
+                    <p>
+                        Используем диагностику и подходящие инструменты для каждой задачи.
+                    </p>
+
+                </div>
+
+
+                <div class="advantage">
+
+                    <h3>✓ Удобная запись</h3>
+
+                    <p>
+                        Клиент может быстро оставить заявку и выбрать удобное время.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="cta" id="contacts">
+
+        <h2>
+            Нужен ремонт автомобиля?
+        </h2>
 
         <p>
-            Диагностика автомобиля, ремонт двигателя,
-            техническое обслуживание и консультация специалистов.
+            Оставьте заявку — мы поможем подобрать подходящий вариант обслуживания.
         </p>
+
+        <a class="button" href="../../index.html#contacts">
+            Связаться
+        </a>
 
     </div>
 
 
+    <footer>
 
-    <div class="card">
+        Demo-проект для портфолио Мирзы ·
+        <a href="../../index.html">
+            Вернуться в портфолио
+        </a>
 
-        <h2>Почему мы?</h2>
-
-        <p>
-            Качественный ремонт, опытные мастера
-            и современное оборудование.
-        </p>
-
-    </div>
-
-
-
-    <a class="button" href="../../index.html">
-        Вернуться в портфолио
-    </a>
-
-
-</div>
-
+    </footer>
 
 </body>
 
