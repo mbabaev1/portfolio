@@ -128,7 +128,7 @@ h1 {
     padding: 30px;
     border-radius: 12px;
     width: 220px;
-    min-height: 180px;
+    height: 180px;
     animation: fadeUp 0.8s ease;
     opacity: 0;
     animation-fill-mode: forwards;
