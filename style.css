@@ -127,11 +127,25 @@ h1 {
     background-color: #2a2a2a;
     padding: 30px;
     border-radius: 12px;
-    width: 150px;
+    width: 220px;
+    min-height: 180px;
     animation: fadeUp 0.8s ease;
     opacity: 0;
     animation-fill-mode: forwards;
     text-align: center;
+}
+
+.skill-card h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.skill-card p {
+    margin: 0;
+    color: #cccccc;
+    font-size: 15px;
+    line-height: 1.5;
 }
 
 .skill-card:nth-child(1) {
