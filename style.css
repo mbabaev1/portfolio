@@ -197,6 +197,8 @@ h1 {
     animation: fadeUp 0.8s ease;
     opacity: 0;
     animation-fill-mode: forwards;
+    display: flex;
+    flex-direction: column;
 
 }
 
@@ -499,7 +501,8 @@ section {
     justify-content: center;
     align-items: center;
     gap: 15px;
-    margin-top: 20px;
+    margin-top: auto;
+    padding-top: 25px;
     flex-wrap: wrap;
 }
 
