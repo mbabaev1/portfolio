@@ -2,140 +2,658 @@
 <html lang="ru">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Строительная компания</title>
-
+    <title>BuildLine | Строительная компания</title>
+    <meta name="description" content="Строительство домов, ремонт и проектирование под ключ.">
 
     <style>
 
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
             font-family: Arial, sans-serif;
-            background: #1e1e1e;
-            color: white;
-            text-align: center;
-        }
-
-
-        header {
-            background: #8a01b8;
-            padding: 60px 20px;
-        }
-
-
-        h1 {
-            font-size: 48px;
-        }
-
-
-        p {
-            color: #cccccc;
-            font-size: 18px;
+            background: #f4f7fb;
+            color: #1f2937;
             line-height: 1.6;
         }
 
-
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 40px 20px;
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 7%;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
 
-
-        .card {
-
-            background: #2a2a2a;
-            padding: 30px;
-            border-radius: 15px;
-            margin-top: 30px;
-
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #1d4ed8;
         }
 
+        .navbar a {
+            color: #1f2937;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #1d4ed8;
+        }
+
+        .hero {
+            min-height: 82vh;
+
+            background:
+                linear-gradient(
+                    rgba(15, 23, 42, 0.68),
+                    rgba(15, 23, 42, 0.68)
+                ),
+                url("../../images/builder.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+
+            padding: 60px 8%;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 720px;
+        }
+
+        .hero-small {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            color: #93c5fd;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #dbeafe;
+            margin-bottom: 30px;
+            max-width: 620px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
 
         .button {
-
             display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background: #8a01b8;
+            padding: 14px 28px;
+            background: #2563eb;
             color: white;
             text-decoration: none;
-            border-radius: 8px;
-
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
         }
-
 
         .button:hover {
-
-            background: #a900e0;
-
+            transform: translateY(-3px);
+            background: #1d4ed8;
         }
 
+        .button-light {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.45);
+        }
+
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-top: 8px;
+        }
+
+        .section-title p {
+            color: #6b7280;
+            max-width: 650px;
+            margin: 10px auto 0;
+        }
+
+        .services {
+            background: white;
+        }
+
+        .services-grid {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .service-card {
+            background: #f8fafc;
+            padding: 32px 25px;
+            border-radius: 16px;
+            border: 1px solid #e5e7eb;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #2563eb;
+            box-shadow: 0 15px 35px rgba(37,99,235,0.12);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 18px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: #6b7280;
+        }
+
+        .about {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .about-content h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: #6b7280;
+            margin-bottom: 18px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .stat {
+            background: white;
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 26px;
+            color: #2563eb;
+        }
+
+        .projects {
+            background: #0f172a;
+            color: white;
+        }
+
+        .projects-grid {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #1e293b;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 22px;
+        }
+
+        .project-content p {
+            color: #cbd5e1;
+            margin-top: 8px;
+        }
+
+        .cta {
+            margin: 0 8% 90px;
+            padding: 60px 30px;
+
+            text-align: center;
+
+            background: linear-gradient(135deg, #2563eb, #1e3a8a);
+            color: white;
+
+            border-radius: 22px;
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            color: #dbeafe;
+            margin-bottom: 25px;
+        }
+
+        .cta .button {
+            background: white;
+            color: #1e3a8a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: #0f172a;
+            color: #94a3b8;
+        }
+
+        footer a {
+            color: #93c5fd;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                padding: 18px 20px;
+            }
+
+            .navbar-links {
+                display: none;
+            }
+
+            .hero {
+                min-height: 75vh;
+                padding: 50px 25px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .button {
+                text-align: center;
+            }
+
+            section {
+                padding: 65px 20px;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .services-grid,
+            .projects-grid,
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .about img {
+                height: 280px;
+            }
+
+            .about-content h2 {
+                font-size: 32px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .cta {
+                margin: 0 20px 60px;
+                padding: 45px 20px;
+            }
+
+            .cta h2 {
+                font-size: 30px;
+            }
+        }
 
     </style>
-
-
 </head>
-
-
 
 <body>
 
+    <nav class="navbar">
+
+        <div class="logo">
+            BuildLine
+        </div>
+
+        <div class="navbar-links">
+            <a href="#services">Услуги</a>
+            <a href="#about">О компании</a>
+            <a href="#projects">Проекты</a>
+            <a href="#contacts">Заявка</a>
+        </div>
+
+    </nav>
 
 
-<header>
+    <header class="hero">
 
-    <h1>Строительная компания</h1>
+        <div class="hero-content">
 
-    <p>
-        Современный сайт для строительного бизнеса
-    </p>
+            <div class="hero-small">
+                Строительство под ключ
+            </div>
 
-</header>
+            <h1>
+                Создаём пространства, в которых хочется жить
+            </h1>
+
+            <p>
+                Строительство домов, ремонт помещений и сопровождение
+                проектов от идеи до готового результата.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a class="button" href="#contacts">
+                    Получить консультацию
+                </a>
+
+                <a class="button button-light" href="#projects">
+                    Наши проекты
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
 
 
+    <section class="services" id="services">
 
-<div class="container">
+        <div class="section-title">
+
+            <span>УСЛУГИ</span>
+
+            <h2>
+                Всё для строительства и ремонта
+            </h2>
+
+            <p>
+                Основные направления работы строительной компании.
+            </p>
+
+        </div>
 
 
-    <div class="card">
+        <div class="services-grid">
 
-        <h2>Наши услуги</h2>
+            <div class="service-card">
+
+                <div class="service-icon">🏠</div>
+
+                <h3>Строительство домов</h3>
+
+                <p>
+                    Возведение частных домов с контролем основных этапов работ.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">🛠️</div>
+
+                <h3>Ремонт помещений</h3>
+
+                <p>
+                    Отделочные работы и обновление жилых и коммерческих помещений.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">📐</div>
+
+                <h3>Проектирование</h3>
+
+                <p>
+                    Планирование пространства и подготовка проекта перед началом работ.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="about">
+
+        <div class="about">
+
+            <img
+                src="../../images/builder.jpg"
+                alt="Строительный проект"
+            >
+
+
+            <div class="about-content">
+
+                <h2>
+                    Надёжный подход к каждому проекту
+                </h2>
+
+                <p>
+                    BuildLine — концепт современной строительной компании,
+                    которая делает акцент на понятном процессе и аккуратном результате.
+                </p>
+
+                <p>
+                    Клиент получает прозрачные этапы работы,
+                    понятную коммуникацию и единый стиль проекта.
+                </p>
+
+
+                <div class="stats">
+
+                    <div class="stat">
+                        <strong>50+</strong>
+                        проектов
+                    </div>
+
+                    <div class="stat">
+                        <strong>5 лет</strong>
+                        опыта
+                    </div>
+
+                    <div class="stat">
+                        <strong>100%</strong>
+                        контроль
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="projects" id="projects">
+
+        <div class="section-title">
+
+            <span>ПРОЕКТЫ</span>
+
+            <h2>
+                Примеры направлений
+            </h2>
+
+        </div>
+
+
+        <div class="projects-grid">
+
+            <div class="project-card">
+
+                <img
+                    src="../../images/builder.jpg"
+                    alt="Современный дом"
+                >
+
+                <div class="project-content">
+
+                    <h3>Частный дом</h3>
+
+                    <p>
+                        Современный жилой проект с функциональной планировкой.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <img
+                    src="../../images/builder.jpg"
+                    alt="Ремонт квартиры"
+                >
+
+                <div class="project-content">
+
+                    <h3>Ремонт квартиры</h3>
+
+                    <p>
+                        Обновление интерьера с акцентом на удобство и практичность.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <img
+                    src="../../images/builder.jpg"
+                    alt="Коммерческое помещение"
+                >
+
+                <div class="project-content">
+
+                    <h3>Коммерческое помещение</h3>
+
+                    <p>
+                        Пространство для бизнеса с современным визуальным стилем.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="cta" id="contacts">
+
+        <h2>
+            Планируете строительство или ремонт?
+        </h2>
 
         <p>
-            Строительство домов, ремонт помещений,
-            проектирование и сопровождение проектов.
+            Расскажите о задаче и получите консультацию по проекту.
         </p>
+
+        <a class="button" href="../../index.html#contacts">
+            Оставить заявку
+        </a>
 
     </div>
 
 
+    <footer>
 
-    <div class="card">
+        Demo-проект для портфолио Мирзы ·
+        <a href="../../index.html">
+            Вернуться в портфолио
+        </a>
 
-        <h2>Наши преимущества</h2>
-
-        <p>
-            Качественные материалы,
-            опытные специалисты и надежный результат.
-        </p>
-
-    </div>
-
-
-
-    <a class="button" href="../../index.html">
-        Вернуться в портфолио
-    </a>
-
-
-
-</div>
-
-
+    </footer>
 
 </body>
 
