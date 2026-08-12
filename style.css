@@ -500,14 +500,14 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     margin-top: auto;
     padding-top: 25px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .project-links a {
-    padding: 10px 20px;
+    padding: 10px 16px;
     background-color: #8a01b8;
     color: white;
     text-decoration: none;
