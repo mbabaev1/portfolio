@@ -2,141 +2,538 @@
 <html lang="ru">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Кофейня</title>
-
+    <title>Roast & Co | Кофейня</title>
+    <meta name="description" content="Уютная кофейня с авторским кофе, десертами и теплой атмосферой.">
 
     <style>
 
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
             font-family: Arial, sans-serif;
-            background: #1e1e1e;
-            color: white;
-            text-align: center;
-        }
-
-
-        header {
-            background: #8a01b8;
-            padding: 60px 20px;
-        }
-
-
-        h1 {
-            font-size: 48px;
-        }
-
-
-        p {
-            color: #cccccc;
-            font-size: 18px;
+            background: #f6efe7;
+            color: #2f241f;
             line-height: 1.6;
         }
 
+        /* ШАПКА */
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 40px 20px;
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 7%;
+            background: #fffaf5;
         }
 
-
-        .card {
-
-            background: #2a2a2a;
-            padding: 30px;
-            border-radius: 15px;
-            margin-top: 30px;
-
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
         }
 
+        .logo span {
+            color: #9b5f3f;
+        }
+
+        .navbar a {
+            color: #2f241f;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #9b5f3f;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 82vh;
+
+            background:
+                linear-gradient(
+                    rgba(47, 36, 31, 0.55),
+                    rgba(47, 36, 31, 0.55)
+                ),
+                url("../../images/coffee.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+
+            padding: 60px 8%;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            color: white;
+        }
+
+        .hero-small {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            color: #f2c49b;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #f5e9df;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
 
         .button {
-
             display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background: #8a01b8;
+            padding: 14px 28px;
+            background: #9b5f3f;
             color: white;
             text-decoration: none;
-            border-radius: 8px;
-
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
         }
-
 
         .button:hover {
-
-            background: #a900e0;
-
+            transform: translateY(-3px);
+            background: #b47652;
         }
 
+        .button-light {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.45);
+        }
+
+        /* СЕКЦИИ */
+
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: #9b5f3f;
+            font-weight: bold;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-top: 8px;
+        }
+
+        .section-title p {
+            color: #76655c;
+            max-width: 650px;
+            margin: 10px auto 0;
+        }
+
+        /* МЕНЮ */
+
+        .menu-section {
+            background: #fffaf5;
+        }
+
+        .menu-grid {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .menu-card {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(80, 50, 30, 0.08);
+            transition: 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .menu-icon {
+            font-size: 42px;
+            margin-bottom: 18px;
+        }
+
+        .menu-card h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .menu-card p {
+            color: #7c6a60;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #9b5f3f;
+            font-size: 18px;
+        }
+
+        /* О НАС */
+
+        .about {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .about-content h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: #74635a;
+            margin-bottom: 18px;
+        }
+
+        /* CTA */
+
+        .cta {
+            margin: 0 8% 90px;
+            padding: 60px 30px;
+
+            text-align: center;
+
+            background: linear-gradient(135deg, #9b5f3f, #633b28);
+            color: white;
+
+            border-radius: 22px;
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            color: #f4ddd0;
+            margin-bottom: 25px;
+        }
+
+        .cta .button {
+            background: #fffaf5;
+            color: #5e3a29;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: #2f241f;
+            color: #c8b8ad;
+        }
+
+        footer a {
+            color: #f2c49b;
+            text-decoration: none;
+        }
+
+        /* МОБИЛЬНАЯ ВЕРСИЯ */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                padding: 18px 20px;
+            }
+
+            .navbar-links {
+                display: none;
+            }
+
+            .hero {
+                min-height: 75vh;
+                padding: 50px 25px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .button {
+                text-align: center;
+            }
+
+            section {
+                padding: 65px 20px;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .about img {
+                height: 280px;
+            }
+
+            .about-content h2 {
+                font-size: 32px;
+            }
+
+            .cta {
+                margin: 0 20px 60px;
+                padding: 45px 20px;
+            }
+
+            .cta h2 {
+                font-size: 30px;
+            }
+        }
 
     </style>
-
-
 </head>
-
-
 
 <body>
 
+    <nav class="navbar">
+
+        <div class="logo">
+            Roast<span>&Co</span>
+        </div>
+
+        <div class="navbar-links">
+            <a href="#menu">Меню</a>
+            <a href="#about">О нас</a>
+            <a href="#contacts">Контакты</a>
+        </div>
+
+    </nav>
 
 
-<header>
+    <header class="hero">
 
-    <h1>Кофейня</h1>
+        <div class="hero-content">
 
-    <p>
-        Современный сайт для уютного кафе
-    </p>
+            <div class="hero-small">
+                Кофе · Десерты · Атмосфера
+            </div>
 
-</header>
+            <h1>
+                Кофейня, в которую хочется возвращаться
+            </h1>
+
+            <p>
+                Авторский кофе, свежая выпечка и спокойная атмосфера
+                для встреч, работы и отдыха.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a class="button" href="#menu">
+                    Посмотреть меню
+                </a>
+
+                <a class="button button-light" href="#contacts">
+                    Забронировать столик
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
 
 
+    <section class="menu-section" id="menu">
 
-<div class="container">
+        <div class="section-title">
+
+            <span>НАШЕ МЕНЮ</span>
+
+            <h2>
+                Напитки, которые создают настроение
+            </h2>
+
+            <p>
+                Несколько популярных позиций из меню кофейни.
+            </p>
+
+        </div>
 
 
-    <div class="card">
+        <div class="menu-grid">
 
-        <h2>Наше меню</h2>
+            <div class="menu-card">
+
+                <div class="menu-icon">☕</div>
+
+                <h3>Капучино</h3>
+
+                <p>
+                    Эспрессо, молоко и нежная молочная пена.
+                </p>
+
+                <div class="price">
+                    250 ₽
+                </div>
+
+            </div>
+
+
+            <div class="menu-card">
+
+                <div class="menu-icon">🥛</div>
+
+                <h3>Латте</h3>
+
+                <p>
+                    Мягкий кофейный вкус с большим количеством молока.
+                </p>
+
+                <div class="price">
+                    290 ₽
+                </div>
+
+            </div>
+
+
+            <div class="menu-card">
+
+                <div class="menu-icon">🥐</div>
+
+                <h3>Круассан</h3>
+
+                <p>
+                    Свежая выпечка с хрустящей корочкой.
+                </p>
+
+                <div class="price">
+                    190 ₽
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="about">
+
+        <div class="about">
+
+            <img
+                src="../../images/coffee.jpg"
+                alt="Интерьер кофейни"
+            >
+
+
+            <div class="about-content">
+
+                <h2>
+                    Место для хорошего кофе и спокойных встреч
+                </h2>
+
+                <p>
+                    Roast&Co — концепт современной городской кофейни,
+                    где важны не только вкус напитка, но и атмосфера.
+                </p>
+
+                <p>
+                    Уютный интерьер, быстрый сервис и простое меню
+                    делают кофейню удобным местом для любого времени дня.
+                </p>
+
+                <a class="button" href="#contacts">
+                    Найти нас
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="cta" id="contacts">
+
+        <h2>
+            Загляните на чашку кофе
+        </h2>
 
         <p>
-            Авторский кофе, свежая выпечка
-            и приятная атмосфера для гостей.
+            Ежедневно с 08:00 до 22:00.
         </p>
+
+        <a class="button" href="../../index.html#contacts">
+            Связаться
+        </a>
 
     </div>
 
 
+    <footer>
 
-    <div class="card">
+        Demo-проект для портфолио Мирзы ·
+        <a href="../../index.html">
+            Вернуться в портфолио
+        </a>
 
-        <h2>Почему мы?</h2>
-
-        <p>
-            Качественные ингредиенты,
-            удобный сервис и уютное место
-            для отдыха.
-        </p>
-
-    </div>
-
-
-
-    <a class="button" href="../../index.html">
-        Вернуться в портфолио
-    </a>
-
-
-
-</div>
-
-
+    </footer>
 
 </body>
 
