@@ -223,6 +223,42 @@ function removeFromCart(productId) {
     renderCart();
 }
 
+function increaseQuantity(productId) {
+
+    const product = cartProducts.find(
+        item => item.id === productId
+    );
+
+    if (!product) {
+        return;
+    }
+
+    product.quantity++;
+
+    renderCart();
+}
+
+
+function decreaseQuantity(productId) {
+
+    const product = cartProducts.find(
+        item => item.id === productId
+    );
+
+    if (!product) {
+        return;
+    }
+
+    product.quantity--;
+
+    if (product.quantity <= 0) {
+        removeFromCart(productId);
+        return;
+    }
+
+    renderCart();
+}
+
 
 function renderCart() {
 
@@ -340,16 +376,39 @@ productsGrid.addEventListener("click", event => {
 
 cartItems.addEventListener("click", event => {
 
-    const button = event.target.closest(".remove-button");
+    const removeButton = event.target.closest(".remove-button");
+    const increaseButton = event.target.closest(".increase");
+    const decreaseButton = event.target.closest(".decrease");
 
-    if (!button) {
+
+    if (removeButton) {
+
+        const productId = Number(removeButton.dataset.id);
+
+        removeFromCart(productId);
+
         return;
     }
 
-    const productId = Number(button.dataset.id);
 
-    removeFromCart(productId);
+    if (increaseButton) {
+
+        const productId = Number(increaseButton.dataset.id);
+
+        increaseQuantity(productId);
+
+        return;
+    }
+
+
+    if (decreaseButton) {
+
+        const productId = Number(decreaseButton.dataset.id);
+
+        decreaseQuantity(productId);
+    }
 });
+
 
 
 cartButton.addEventListener("click", openCart);
