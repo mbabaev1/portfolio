@@ -77,6 +77,8 @@ const checkoutModal = document.querySelector("#checkoutModal");
 const checkoutClose = document.querySelector("#checkoutClose");
 const checkoutForm = document.querySelector("#checkoutForm");
 
+const successMessage = document.querySelector("#successMessage");
+
 
 let cartProducts = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -447,7 +449,11 @@ checkoutForm.addEventListener("submit", event => {
 
     closeCheckout();
 
-    alert("Заказ успешно оформлен!");
+    successMessage.classList.add("active");
+
+setTimeout(() => {
+    successMessage.classList.remove("active");
+}, 3000);
 });
 
 renderProducts(products);
