@@ -73,6 +73,10 @@ const cartCount = document.querySelector("#cartCount");
 const cartTotal = document.querySelector("#cartTotal");
 const checkoutButton = document.querySelector("#checkoutButton");
 
+const checkoutModal = document.querySelector("#checkoutModal");
+const checkoutClose = document.querySelector("#checkoutClose");
+const checkoutForm = document.querySelector("#checkoutForm");
+
 
 let cartProducts = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -358,6 +362,16 @@ function closeCartPanel() {
     overlay.classList.remove("active");
 }
 
+function openCheckout() {
+    checkoutModal.classList.add("active");
+    overlay.classList.add("active");
+}
+
+function closeCheckout() {
+    checkoutModal.classList.remove("active");
+    overlay.classList.remove("active");
+}
+
 
 searchInput.addEventListener("input", updateProducts);
 categoryFilter.addEventListener("change", updateProducts);
@@ -404,22 +418,36 @@ cartItems.addEventListener("click", function(event) {
 
 cartButton.addEventListener("click", openCart);
 closeCart.addEventListener("click", closeCartPanel);
-overlay.addEventListener("click", closeCartPanel);
+overlay.addEventListener("click", () => {
+    closeCartPanel();
+    closeCheckout();
+});
 
 checkoutButton.addEventListener("click", () => {
 
     if (cartProducts.length === 0) {
-        alert("Корзина пуста");
         return;
     }
 
-    alert("Заказ успешно оформлен!");
+    closeCartPanel();
+    openCheckout();
+});
+
+checkoutClose.addEventListener("click", closeCheckout);
+
+checkoutForm.addEventListener("submit", event => {
+
+    event.preventDefault();
 
     cartProducts = [];
 
     renderCart();
 
-    closeCartPanel();
+    checkoutForm.reset();
+
+    closeCheckout();
+
+    alert("Заказ успешно оформлен!");
 });
 
 renderProducts(products);
