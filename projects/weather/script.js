@@ -15,6 +15,8 @@ const wind = document.querySelector("#wind");
 const forecast = document.querySelector("#forecast");
 const forecastGrid = document.querySelector("#forecastGrid");
 
+const locationButton = document.querySelector("#locationButton");
+
 
 function getWeatherDescription(code) {
 
@@ -127,6 +129,50 @@ async function getWeather(latitude, longitude) {
     return await response.json();
 }
 
+async function showWeatherByCoordinates(latitude, longitude) {
+
+    try {
+        status.textContent = "Определяем погоду по местоположению...";
+        status.className = "status loading";
+
+        weatherResult.classList.remove("active");
+        forecast.classList.remove("active");
+
+        const weatherData = await getWeather(latitude, longitude);
+        const current = weatherData.current;
+
+        cityName.textContent = "Ваше местоположение";
+
+        weatherDescription.textContent =
+            getWeatherDescription(current.weather_code);
+
+        temperature.textContent =
+            Math.round(current.temperature_2m) + "°";
+
+        feelsLike.textContent =
+            Math.round(current.apparent_temperature) + "°";
+
+        humidity.textContent =
+            current.relative_humidity_2m + "%";
+
+        wind.textContent =
+            Math.round(current.wind_speed_10m) + " км/ч";
+
+        status.textContent = "Актуальные данные";
+        status.className = "status";
+
+        weatherResult.classList.add("active");
+
+        renderForecast(weatherData.daily);
+
+    } catch (error) {
+        status.textContent = "Не удалось загрузить погоду";
+        status.className = "status error";
+
+        weatherResult.classList.remove("active");
+        forecast.classList.remove("active");
+    }
+}
 
 async function showWeather(city) {
 
@@ -198,4 +244,30 @@ searchForm.addEventListener("submit", event => {
     }
 
     showWeather(city);
+});
+
+locationButton.addEventListener("click", () => {
+
+    if (!navigator.geolocation) {
+        status.textContent = "Геолокация не поддерживается браузером";
+        status.className = "status error";
+        return;
+    }
+
+    status.textContent = "Определяем ваше местоположение...";
+    status.className = "status loading";
+
+    navigator.geolocation.getCurrentPosition(
+        position => {
+            showWeatherByCoordinates(
+                position.coords.latitude,
+                position.coords.longitude
+            );
+        },
+
+        () => {
+            status.textContent = "Не удалось получить местоположение";
+            status.className = "status error";
+        }
+    );
 });
