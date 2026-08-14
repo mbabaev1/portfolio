@@ -191,3 +191,80 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* FORECAST */
+
+.forecast {
+    display: none;
+    margin-top: 30px;
+}
+
+.forecast.active {
+    display: block;
+}
+
+.forecast h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+.forecast-card {
+    padding: 18px 14px;
+    border-radius: 16px;
+
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+
+    text-align: center;
+}
+
+.forecast-date {
+    font-size: 14px;
+    color: #93c5fd;
+    margin-bottom: 12px;
+    text-transform: capitalize;
+}
+
+.forecast-description {
+    min-height: 42px;
+    color: #cbd5e1;
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+
+.forecast-temperature {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
+}
+
+.forecast-temperature strong {
+    font-size: 22px;
+}
+
+.forecast-temperature span {
+    color: #94a3b8;
+    font-size: 17px;
+}
+
+@media (max-width: 700px) {
+
+    .forecast-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 420px) {
+
+    .forecast-grid {
+        grid-template-columns: 1fr;
+    }
+}
