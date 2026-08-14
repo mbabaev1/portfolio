@@ -61,6 +61,26 @@
 
 [🌐 Demo](https://mbabaev1.github.io/portfolio/projects/construction/) · [💻 Исходный код](https://github.com/mbabaev1/portfolio/tree/main/projects/construction)
 
+### 🛒 NovaShop
+
+![NovaShop](images/shop.jpg)
+
+Интернет-магазин с поиском, фильтрацией, сортировкой и интерактивной корзиной.
+
+Реализованы:
+- поиск товаров;
+- фильтрация по категориям;
+- сортировка по цене;
+- корзина;
+- изменение количества товаров;
+- подсчёт итоговой суммы;
+- localStorage;
+- оформление заказа.
+
+**Технологии:** HTML, CSS, JavaScript
+
+[🌐 Demo](https://mbabaev1.github.io/portfolio/projects/shop/) · [💻 Исходный код](https://github.com/mbabaev1/portfolio/tree/main/projects/shop)
+
 ## 🎯 Цель
 
 Развиваться как Frontend-разработчик, создавать качественные адаптивные интерфейсы, работать над реальными проектами и постоянно улучшать свои навыки.
