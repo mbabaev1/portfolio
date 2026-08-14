@@ -12,9 +12,7 @@
 
 ## 🚀 Live Demo
 
-Посмотреть портфолио:
-
-https://mbabaev1.github.io/portfolio/
+[🌐 Открыть портфолио](https://mbabaev1.github.io/portfolio/)
 
 ## 🛠 Технологии
 
