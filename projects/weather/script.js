@@ -12,6 +12,9 @@ const feelsLike = document.querySelector("#feelsLike");
 const humidity = document.querySelector("#humidity");
 const wind = document.querySelector("#wind");
 
+const forecast = document.querySelector("#forecast");
+const forecastGrid = document.querySelector("#forecastGrid");
+
 
 function getWeatherDescription(code) {
 
@@ -38,6 +41,50 @@ function getWeatherDescription(code) {
     };
 
     return descriptions[code] || "Погодные условия";
+}
+
+function renderForecast(daily) {
+
+    forecastGrid.innerHTML = "";
+
+    daily.time.forEach((date, index) => {
+
+        const day = new Date(date);
+
+        const dayName = day.toLocaleDateString("ru-RU", {
+            weekday: "short",
+            day: "numeric",
+            month: "short"
+        });
+
+        const card = document.createElement("div");
+
+        card.className = "forecast-card";
+
+        card.innerHTML = `
+            <p class="forecast-date">
+                ${dayName}
+            </p>
+
+            <p class="forecast-description">
+                ${getWeatherDescription(daily.weather_code[index])}
+            </p>
+
+            <div class="forecast-temperature">
+                <strong>
+                    ${Math.round(daily.temperature_2m_max[index])}°
+                </strong>
+
+                <span>
+                    ${Math.round(daily.temperature_2m_min[index])}°
+                </span>
+            </div>
+        `;
+
+        forecastGrid.appendChild(card);
+    });
+
+    forecast.classList.add("active");
 }
 
 
@@ -67,6 +114,8 @@ async function getWeather(latitude, longitude) {
     const url =
         `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}` +
         `&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m` +
+        `&daily=weather_code,temperature_2m_max,temperature_2m_min` +
+        `&forecast_days=5` +
         `&timezone=auto`;
 
     const response = await fetch(url);
@@ -124,12 +173,16 @@ async function showWeather(city) {
 
         weatherResult.classList.add("active");
 
+        renderForecast(weatherData.daily);
+
     } catch (error) {
 
         status.textContent = error.message;
         status.className = "status error";
 
         weatherResult.classList.remove("active");
+
+        forecast.classList.remove("active");
     }
 }
 
