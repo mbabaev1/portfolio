@@ -73,7 +73,7 @@ const cartCount = document.querySelector("#cartCount");
 const cartTotal = document.querySelector("#cartTotal");
 
 
-let cartProducts = [];
+let cartProducts = JSON.parse(localStorage.getItem("cart")) || [];
 
 
 function formatPrice(price) {
@@ -261,6 +261,8 @@ function decreaseQuantity(productId) {
 
 
 function renderCart() {
+
+    localStorage.setItem("cart", JSON.stringify(cartProducts));
 
     cartItems.innerHTML = "";
 
