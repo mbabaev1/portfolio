@@ -245,27 +245,45 @@ function renderCart() {
 
         item.className = "cart-item";
 
-        item.innerHTML = `
-            <div class="cart-item-top">
+       item.innerHTML = `
+    <div class="cart-item-top">
 
-                <div>
-                    <h3>${product.title}</h3>
+        <div>
+            <h3>${product.title}</h3>
+            <p>${formatPrice(product.price)}</p>
+        </div>
 
-                    <p>
-                        ${product.quantity} ×
-                        ${formatPrice(product.price)}
-                    </p>
-                </div>
+        <button
+            class="remove-button"
+            data-id="${product.id}"
+        >
+            Удалить
+        </button>
 
-                <button
-                    class="remove-button"
-                    data-id="${product.id}"
-                >
-                    Удалить
-                </button>
+    </div>
 
-            </div>
-        `;
+    <div class="quantity-controls">
+
+        <button
+            class="quantity-button decrease"
+            data-id="${product.id}"
+        >
+            −
+        </button>
+
+        <span class="quantity">
+            ${product.quantity}
+        </span>
+
+        <button
+            class="quantity-button increase"
+            data-id="${product.id}"
+        >
+            +
+        </button>
+
+    </div>
+`;
 
         cartItems.appendChild(item);
     });
