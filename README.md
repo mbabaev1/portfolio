@@ -35,7 +35,7 @@
 
 **Технологии:** HTML, CSS, JavaScript
 
-[Открыть Demo](https://mbabaev1.github.io/portfolio/projects/autoservice/)
+[🌐 Demo](https://mbabaev1.github.io/portfolio/projects/autoservice/) · [💻 Исходный код](https://github.com/mbabaev1/portfolio/tree/main/projects/autoservice)
 
 ---
 
@@ -47,7 +47,7 @@
 
 **Технологии:** HTML, CSS, JavaScript
 
-[Открыть Demo](https://mbabaev1.github.io/portfolio/projects/coffee/)
+[🌐 Demo](https://mbabaev1.github.io/portfolio/projects/coffee/) · [💻 Исходный код](https://github.com/mbabaev1/portfolio/tree/main/projects/coffee)
 
 ---
 
@@ -59,7 +59,7 @@
 
 **Технологии:** HTML, CSS, JavaScript
 
-[Открыть Demo](https://mbabaev1.github.io/portfolio/projects/construction/)
+[🌐 Demo](https://mbabaev1.github.io/portfolio/projects/construction/) · [💻 Исходный код](https://github.com/mbabaev1/portfolio/tree/main/projects/construction)
 
 ## 🎯 Цель
 
