@@ -343,6 +343,7 @@ function renderCart() {
 
     cartCount.textContent = totalQuantity;
     cartTotal.textContent = formatPrice(totalPrice);
+    checkoutButton.disabled = cartProducts.length === 0;
 }
 
 
