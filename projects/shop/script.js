@@ -71,6 +71,7 @@ const overlay = document.querySelector("#overlay");
 const cartItems = document.querySelector("#cartItems");
 const cartCount = document.querySelector("#cartCount");
 const cartTotal = document.querySelector("#cartTotal");
+const checkoutButton = document.querySelector("#checkoutButton");
 
 
 let cartProducts = JSON.parse(localStorage.getItem("cart")) || [];
@@ -404,6 +405,21 @@ cartButton.addEventListener("click", openCart);
 closeCart.addEventListener("click", closeCartPanel);
 overlay.addEventListener("click", closeCartPanel);
 
+checkoutButton.addEventListener("click", () => {
+
+    if (cartProducts.length === 0) {
+        alert("Корзина пуста");
+        return;
+    }
+
+    alert("Заказ успешно оформлен!");
+
+    cartProducts = [];
+
+    renderCart();
+
+    closeCartPanel();
+});
 
 renderProducts(products);
 renderCart();
