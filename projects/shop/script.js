@@ -374,41 +374,28 @@ productsGrid.addEventListener("click", event => {
 });
 
 
-cartItems.addEventListener("click", event => {
+cartItems.addEventListener("click", function(event) {
 
-    const removeButton = event.target.closest(".remove-button");
-    const increaseButton = event.target.closest(".increase");
-    const decreaseButton = event.target.closest(".decrease");
+    const button = event.target.closest("button");
 
-
-    if (removeButton) {
-
-        const productId = Number(removeButton.dataset.id);
-
-        removeFromCart(productId);
-
+    if (!button) {
         return;
     }
 
+    const productId = Number(button.dataset.id);
 
-    if (increaseButton) {
-
-        const productId = Number(increaseButton.dataset.id);
-
+    if (button.classList.contains("increase")) {
         increaseQuantity(productId);
-
-        return;
     }
 
-
-    if (decreaseButton) {
-
-        const productId = Number(decreaseButton.dataset.id);
-
+    if (button.classList.contains("decrease")) {
         decreaseQuantity(productId);
     }
-});
 
+    if (button.classList.contains("remove-button")) {
+        removeFromCart(productId);
+    }
+});
 
 
 cartButton.addEventListener("click", openCart);
