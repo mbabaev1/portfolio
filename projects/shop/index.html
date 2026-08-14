@@ -3,9 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Магазин</title>
+
+    <title>NovaShop | Каталог товаров</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+    <header class="header">
+        <div class="logo">NovaShop</div>
+
+        <button class="cart-button" id="cartButton">
+            Корзина
+            <span id="cartCount">0</span>
+        </button>
+    </header>
+
+
+    <main class="container">
+
+        <section class="hero">
+            <p class="hero-label">ИНТЕРНЕТ-МАГАЗИН</p>
+
+            <h1>Каталог товаров</h1>
+
+            <p>
+                Найдите нужный товар с помощью поиска,
+                фильтров и сортировки.
+            </p>
+        </section>
+
+
+        <section class="controls">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Поиск товаров..."
+            >
+
+            <select id="categoryFilter">
+                <option value="all">Все категории</option>
+                <option value="electronics">Электроника</option>
+                <option value="clothing">Одежда</option>
+                <option value="home">Для дома</option>
+            </select>
+
+            <select id="sortSelect">
+                <option value="default">Сортировка</option>
+                <option value="price-asc">Цена: по возрастанию</option>
+                <option value="price-desc">Цена: по убыванию</option>
+            </select>
+
+        </section>
+
+
+        <section>
+
+            <div class="products-header">
+                <h2>Товары</h2>
+
+                <p>
+                    Найдено:
+                    <span id="productsCount">0</span>
+                </p>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Карточки создаст JavaScript -->
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <aside class="cart" id="cart">
+
+        <div class="cart-header">
+            <h2>Корзина</h2>
+
+            <button id="closeCart">
+                ×
+            </button>
+        </div>
+
+
+        <div class="cart-items" id="cartItems">
+            <!-- Товары корзины создаст JavaScript -->
+        </div>
+
+
+        <div class="cart-footer">
+
+            <p>
+                Итого:
+                <strong id="cartTotal">0 ₽</strong>
+            </p>
+
+            <button class="checkout-button">
+                Оформить заказ
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <div class="overlay" id="overlay"></div>
+
+
+    <script src="script.js"></script>
 
 </body>
 </html>
