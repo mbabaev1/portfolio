@@ -1,1 +1,96 @@
-<!-- Weather App -->
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WeatherNow | Погода</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="weather-app">
+
+        <section class="weather-card">
+
+            <div class="weather-header">
+                <div>
+                    <p class="eyebrow">ПОГОДА ОНЛАЙН</p>
+                    <h1>WeatherNow</h1>
+                </div>
+            </div>
+
+            <form class="search-form" id="searchForm">
+
+                <input
+                    type="text"
+                    id="cityInput"
+                    placeholder="Введите город..."
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit">
+                    Найти
+                </button>
+
+            </form>
+
+            <div class="status" id="status">
+                Введите город, чтобы узнать погоду.
+            </div>
+
+            <section class="weather-result" id="weatherResult">
+
+                <div class="main-weather">
+
+                    <div>
+                        <p class="city-name" id="cityName">
+                            —
+                        </p>
+
+                        <p class="weather-description" id="weatherDescription">
+                            —
+                        </p>
+                    </div>
+
+                    <div class="temperature" id="temperature">
+                        —
+                    </div>
+
+                </div>
+
+                <div class="weather-details">
+
+                    <div class="detail-card">
+                        <span>Ощущается</span>
+                        <strong id="feelsLike">—</strong>
+                    </div>
+
+                    <div class="detail-card">
+                        <span>Влажность</span>
+                        <strong id="humidity">—</strong>
+                    </div>
+
+                    <div class="detail-card">
+                        <span>Ветер</span>
+                        <strong id="wind">—</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
