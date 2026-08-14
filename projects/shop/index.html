@@ -110,6 +110,58 @@
 
     </aside>
 
+    <div class="checkout-modal" id="checkoutModal">
+
+    <div class="checkout-modal-content">
+
+        <button class="checkout-close" id="checkoutClose">
+            ×
+        </button>
+
+        <h2>Оформление заказа</h2>
+
+        <form id="checkoutForm">
+
+            <label>
+                Имя
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Введите имя"
+                    required
+                >
+            </label>
+
+            <label>
+                Телефон
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    placeholder="+7 999 123-45-67"
+                    required
+                >
+            </label>
+
+            <label>
+                Адрес
+                <input
+                    type="text"
+                    id="customerAddress"
+                    placeholder="Введите адрес доставки"
+                    required
+                >
+            </label>
+
+            <button type="submit" class="confirm-order-button">
+                Подтвердить заказ
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
 
     <div class="overlay" id="overlay"></div>
 
