@@ -293,6 +293,36 @@ body {
     cursor: pointer;
 }
 
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.quantity-button {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 8px;
+    background: #6d28d9;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.quantity-button:hover {
+    background: #5b21b6;
+}
+
+.quantity {
+    min-width: 25px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 .cart-footer {
     padding: 25px;
     border-top: 1px solid #e5e7eb;
