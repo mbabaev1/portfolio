@@ -527,3 +527,76 @@ body {
 .confirm-order-button:hover {
     background: #5b21b6;
 }
+
+/* SUCCESS MESSAGE */
+
+.success-message {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    max-width: 360px;
+    padding: 18px 20px;
+
+    background: white;
+    color: #1f2937;
+
+    border-radius: 14px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.18);
+
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+
+    transition: 0.3s ease;
+
+    z-index: 400;
+}
+
+.success-message.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.success-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #dcfce7;
+    color: #16a34a;
+
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.success-message strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.success-message p {
+    margin: 0;
+    color: #6b7280;
+}
+
+@media (max-width: 600px) {
+    .success-message {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        max-width: none;
+    }
+}
