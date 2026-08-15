@@ -9,6 +9,7 @@ const activeCount = document.querySelector("#activeCount");
 const completedCount = document.querySelector("#completedCount");
 
 const searchInput = document.querySelector("#searchInput");
+const sortSelect = document.querySelector("#sortSelect");
 const filters = document.querySelector("#filters");
 const clearCompleted = document.querySelector("#clearCompleted");
 
@@ -85,7 +86,7 @@ function getVisibleTasks() {
         .trim()
         .toLowerCase();
 
-    return tasks.filter(task => {
+    let visibleTasks = tasks.filter(task => {
 
         const matchesSearch = task.title
             .toLowerCase()
@@ -103,7 +104,51 @@ function getVisibleTasks() {
 
         return matchesSearch && matchesFilter;
     });
+
+
+    if (sortSelect.value === "newest") {
+
+        visibleTasks.sort(
+            (a, b) => b.id - a.id
+        );
+    }
+
+
+    if (sortSelect.value === "oldest") {
+
+        visibleTasks.sort(
+            (a, b) => a.id - b.id
+        );
+    }
+
+
+    if (sortSelect.value === "deadline") {
+
+        visibleTasks.sort((a, b) => {
+
+            if (!a.date && !b.date) {
+                return 0;
+            }
+
+            if (!a.date) {
+                return 1;
+            }
+
+            if (!b.date) {
+                return -1;
+            }
+
+            return new Date(a.date) - new Date(b.date);
+        });
+    }
+
+
+    return visibleTasks;
 }
+
+sortSelect.addEventListener("change", () => {
+    renderTasks();
+});
 
 
 function renderTasks() {
