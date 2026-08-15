@@ -300,18 +300,6 @@ editModal.addEventListener("click", event => {
     }
 });
 
-    const cleanTitle = newTitle.trim();
-
-    if (!cleanTitle) {
-        return;
-    }
-
-    task.title = cleanTitle;
-
-    saveTasks();
-    renderTasks();
-}
-
 
 taskForm.addEventListener("submit", event => {
 
