@@ -12,6 +12,16 @@ const searchInput = document.querySelector("#searchInput");
 const filters = document.querySelector("#filters");
 const clearCompleted = document.querySelector("#clearCompleted");
 
+const editModal = document.querySelector("#editModal");
+const editForm = document.querySelector("#editForm");
+const editTaskInput = document.querySelector("#editTaskInput");
+const editTaskDate = document.querySelector("#editTaskDate");
+
+const closeEditModal = document.querySelector("#closeEditModal");
+const cancelEdit = document.querySelector("#cancelEdit");
+
+let editingTaskId = null;
+
 
 let tasks = JSON.parse(localStorage.getItem("taskflowTasks")) || [];
 
@@ -170,6 +180,16 @@ function escapeHTML(value) {
     return element.innerHTML;
 }
 
+document.addEventListener("keydown", event => {
+
+    if (
+        event.key === "Escape" &&
+        editModal.classList.contains("active")
+    ) {
+        closeEdit();
+    }
+});
+
 
 function addTask(title, date) {
 
@@ -225,14 +245,60 @@ function editTask(taskId) {
         return;
     }
 
-    const newTitle = prompt(
-        "Измените название задачи:",
-        task.title
+    editingTaskId = taskId;
+
+    editTaskInput.value = task.title;
+    editTaskDate.value = task.date || "";
+
+    editModal.classList.add("active");
+
+    editTaskInput.focus();
+}
+
+function closeEdit() {
+
+    editModal.classList.remove("active");
+
+    editingTaskId = null;
+
+    editForm.reset();
+}
+
+editForm.addEventListener("submit", event => {
+
+    event.preventDefault();
+
+    const task = tasks.find(
+        task => task.id === editingTaskId
     );
 
-    if (newTitle === null) {
+    if (!task) {
         return;
     }
+
+    const newTitle = editTaskInput.value.trim();
+
+    if (!newTitle) {
+        return;
+    }
+
+    task.title = newTitle;
+    task.date = editTaskDate.value;
+
+    saveTasks();
+    renderTasks();
+    closeEdit();
+});
+
+closeEditModal.addEventListener("click", closeEdit);
+cancelEdit.addEventListener("click", closeEdit);
+
+editModal.addEventListener("click", event => {
+
+    if (event.target === editModal) {
+        closeEdit();
+    }
+});
 
     const cleanTitle = newTitle.trim();
 
@@ -350,6 +416,5 @@ clearCompleted.addEventListener("click", () => {
     saveTasks();
     renderTasks();
 });
-
 
 renderTasks();
