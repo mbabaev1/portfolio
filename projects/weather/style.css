@@ -314,12 +314,6 @@ body {
     display: block;
 }
 
-.recent-searches > p {
-    margin-bottom: 10px;
-    color: #94a3b8;
-    font-size: 14px;
-}
-
 .recent-cities {
     display: flex;
     flex-wrap: wrap;
@@ -341,4 +335,30 @@ body {
 .recent-city:hover {
     background: rgba(255,255,255,0.15);
     color: white;
+}
+
+.recent-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.recent-header p {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+#clearRecent {
+    border: none;
+    background: none;
+    color: #93c5fd;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+#clearRecent:hover {
+    color: white;
+    text-decoration: underline;
 }
