@@ -133,6 +133,68 @@
 
     </main>
 
+    <div class="modal-overlay" id="editModal">
+
+    <div class="edit-modal">
+
+        <div class="edit-modal-header">
+            <h2>Редактировать задачу</h2>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeEditModal"
+                aria-label="Закрыть"
+            >
+                ×
+            </button>
+        </div>
+
+        <form id="editForm">
+
+            <label for="editTaskInput">
+                Название задачи
+            </label>
+
+            <input
+                type="text"
+                id="editTaskInput"
+                required
+            >
+
+            <label for="editTaskDate">
+                Срок выполнения
+            </label>
+
+            <input
+                type="date"
+                id="editTaskDate"
+            >
+
+            <div class="edit-modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-edit"
+                    id="cancelEdit"
+                >
+                    Отмена
+                </button>
+
+                <button
+                    type="submit"
+                    class="save-edit"
+                >
+                    Сохранить
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
 
     <script src="script.js"></script>
 
