@@ -111,7 +111,7 @@ button {
 
 .task-tools {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr 170px auto;
     gap: 15px;
     align-items: center;
     margin-bottom: 25px;
