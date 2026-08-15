@@ -17,6 +17,7 @@ const forecastGrid = document.querySelector("#forecastGrid");
 
 const locationButton = document.querySelector("#locationButton");
 
+const currentWeatherIcon = document.querySelector("#currentWeatherIcon");
 
 function getWeatherDescription(code) {
 
@@ -192,6 +193,9 @@ async function showWeatherByCoordinates(latitude, longitude) {
         const weatherData = await getWeather(latitude, longitude);
         const current = weatherData.current;
 
+        currentWeatherIcon.textContent =
+    getWeatherIcon(current.weather_code);
+
         cityName.textContent = "Ваше местоположение";
 
         weatherDescription.textContent =
@@ -244,6 +248,9 @@ async function showWeather(city) {
 
 
         const current = weatherData.current;
+
+        currentWeatherIcon.textContent =
+    getWeatherIcon(current.weather_code);
 
 
         cityName.textContent =
