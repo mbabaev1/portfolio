@@ -1,6 +1,7 @@
 const taskForm = document.querySelector("#taskForm");
 const taskInput = document.querySelector("#taskInput");
 const taskDate = document.querySelector("#taskDate");
+const taskPriority = document.querySelector("#taskPriority");
 
 const taskList = document.querySelector("#taskList");
 
@@ -10,6 +11,7 @@ const completedCount = document.querySelector("#completedCount");
 
 const searchInput = document.querySelector("#searchInput");
 const sortSelect = document.querySelector("#sortSelect");
+const priorityFilter = document.querySelector("#priorityFilter");
 const filters = document.querySelector("#filters");
 const clearCompleted = document.querySelector("#clearCompleted");
 
@@ -92,6 +94,12 @@ function getVisibleTasks() {
             .toLowerCase()
             .includes(searchValue);
 
+        const taskPriorityValue = task.priority || "medium";
+
+const matchesPriority =
+    priorityFilter.value === "all" ||
+    taskPriorityValue === priorityFilter.value;
+
         let matchesFilter = true;
 
         if (currentFilter === "active") {
@@ -102,7 +110,9 @@ function getVisibleTasks() {
             matchesFilter = task.completed;
         }
 
-        return matchesSearch && matchesFilter;
+        return matchesSearch &&
+       matchesFilter &&
+       matchesPriority;
     });
 
 
@@ -185,6 +195,14 @@ item.className = `
     ${overdue ? "overdue" : ""}
 `;
 
+        const priority = task.priority || "medium";
+
+const priorityNames = {
+    high: "Высокий",
+    medium: "Средний",
+    low: "Низкий"
+};
+
         item.innerHTML = `
             <div class="task-main">
 
@@ -211,6 +229,10 @@ item.className = `
         </span>
     ` : ""}
 </p>
+
+<span class="priority-badge priority-${priority}">
+    ${priorityNames[priority]}
+</span>
 
                 </div>
 
@@ -264,14 +286,15 @@ document.addEventListener("keydown", event => {
 });
 
 
-function addTask(title, date) {
+function addTask(title, date, priority) {
 
-    const task = {
-        id: Date.now(),
-        title,
-        date,
-        completed: false
-    };
+   const task = {
+    id: Date.now(),
+    title,
+    date,
+    priority,
+    completed: false
+};
 
     tasks.unshift(task);
 
@@ -380,12 +403,13 @@ taskForm.addEventListener("submit", event => {
 
     const title = taskInput.value.trim();
     const date = taskDate.value;
+    const priority = taskPriority.value;
 
     if (!title) {
         return;
     }
 
-    addTask(title, date);
+    addTask(title, date, priority);
 
     taskForm.reset();
     taskInput.focus();
@@ -459,6 +483,10 @@ clearCompleted.addEventListener("click", () => {
     );
 
     saveTasks();
+    renderTasks();
+});
+
+priorityFilter.addEventListener("change", () => {
     renderTasks();
 });
 
