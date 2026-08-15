@@ -19,6 +19,12 @@ const locationButton = document.querySelector("#locationButton");
 
 const currentWeatherIcon = document.querySelector("#currentWeatherIcon");
 
+const recentSearches = document.querySelector("#recentSearches");
+const recentCities = document.querySelector("#recentCities");
+
+let recentCityList =
+    JSON.parse(localStorage.getItem("recentCities")) || [];
+
 function getWeatherDescription(code) {
 
     const descriptions = {
@@ -229,6 +235,53 @@ async function showWeatherByCoordinates(latitude, longitude) {
     }
 }
 
+function renderRecentCities() {
+
+    recentCities.innerHTML = "";
+
+    if (recentCityList.length === 0) {
+        recentSearches.classList.remove("active");
+        return;
+    }
+
+    recentSearches.classList.add("active");
+
+    recentCityList.forEach(city => {
+
+        const button = document.createElement("button");
+
+        button.className = "recent-city";
+        button.type = "button";
+        button.textContent = city;
+
+        button.addEventListener("click", () => {
+            cityInput.value = city;
+            showWeather(city);
+        });
+
+        recentCities.appendChild(button);
+    });
+}
+
+
+function saveRecentCity(city) {
+
+    recentCityList = recentCityList.filter(
+        item => item.toLowerCase() !== city.toLowerCase()
+    );
+
+    recentCityList.unshift(city);
+
+    recentCityList = recentCityList.slice(0, 5);
+
+    localStorage.setItem(
+        "recentCities",
+        JSON.stringify(recentCityList)
+    );
+
+    renderRecentCities();
+}
+
 async function showWeather(city) {
 
     try {
@@ -240,6 +293,8 @@ async function showWeather(city) {
 
 
         const location = await getCityCoordinates(city);
+
+        saveRecentCity(location.name);
 
         const weatherData = await getWeather(
             location.latitude,
@@ -329,3 +384,5 @@ locationButton.addEventListener("click", () => {
         }
     );
 });
+
+renderRecentCities();
