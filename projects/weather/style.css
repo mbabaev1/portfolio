@@ -269,6 +269,13 @@ body {
     }
 }
 
+@media (max-width: 600px) {
+
+    .current-weather-icon {
+        font-size: 44px;
+    }
+}
+
 #locationButton {
     grid-column: 1 / -1;
 
@@ -285,4 +292,15 @@ body {
 .forecast-icon {
     font-size: 32px;
     margin-bottom: 10px;
+}
+
+.current-weather-visual {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.current-weather-icon {
+    font-size: 58px;
+    line-height: 1;
 }
