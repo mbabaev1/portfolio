@@ -50,6 +50,20 @@ function formatDate(date) {
         });
 }
 
+function isOverdue(date, completed) {
+
+    if (!date || completed) {
+        return false;
+    }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const deadline = new Date(date + "T00:00:00");
+
+    return deadline < today;
+}
+
 
 function updateStats() {
 
@@ -115,8 +129,16 @@ function renderTasks() {
 
         const item = document.createElement("article");
 
-        item.className =
-            `task-item ${task.completed ? "completed" : ""}`;
+        const overdue = isOverdue(
+    task.date,
+    task.completed
+);
+
+item.className = `
+    task-item
+    ${task.completed ? "completed" : ""}
+    ${overdue ? "overdue" : ""}
+`;
 
         item.innerHTML = `
             <div class="task-main">
@@ -136,8 +158,14 @@ function renderTasks() {
                     </h3>
 
                     <p class="task-date">
-                        ${formatDate(task.date)}
-                    </p>
+    ${formatDate(task.date)}
+
+    ${overdue ? `
+        <span class="overdue-label">
+            Просрочено
+        </span>
+    ` : ""}
+</p>
 
                 </div>
 
