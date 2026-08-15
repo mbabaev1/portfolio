@@ -295,12 +295,12 @@ async function showWeather(city) {
 
         const location = await getCityCoordinates(city);
 
-        saveRecentCity(location.name);
-
         const weatherData = await getWeather(
             location.latitude,
             location.longitude
         );
+
+    saveRecentCity(location.name);
 
 
         const current = weatherData.current;
