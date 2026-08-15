@@ -73,7 +73,7 @@ button {
 
 .task-form {
     display: grid;
-    grid-template-columns: 1fr 170px auto;
+    grid-template-columns: minmax(250px, 1fr) 170px 180px auto;
     gap: 12px;
     margin-bottom: 25px;
 }
@@ -298,8 +298,8 @@ button {
     }
 
     .task-tools {
-        grid-template-columns: 1fr 160px 160px auto;
-    }
+    grid-template-columns: 1fr;
+}
 
     .filters {
         display: grid;
