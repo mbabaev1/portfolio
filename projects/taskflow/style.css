@@ -518,3 +518,20 @@ button {
     font-weight: 700;
     text-transform: uppercase;
 }
+
+.sort-select {
+    padding: 10px 14px;
+
+    border: 1px solid #334155;
+    border-radius: 10px;
+    outline: none;
+
+    background: #1e293b;
+    color: #cbd5e1;
+
+    cursor: pointer;
+}
+
+.sort-select:focus {
+    border-color: #3b82f6;
+}
