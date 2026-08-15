@@ -1,1 +1,355 @@
+const taskForm = document.querySelector("#taskForm");
+const taskInput = document.querySelector("#taskInput");
+const taskDate = document.querySelector("#taskDate");
 
+const taskList = document.querySelector("#taskList");
+
+const totalTasks = document.querySelector("#totalTasks");
+const activeCount = document.querySelector("#activeCount");
+const completedCount = document.querySelector("#completedCount");
+
+const searchInput = document.querySelector("#searchInput");
+const filters = document.querySelector("#filters");
+const clearCompleted = document.querySelector("#clearCompleted");
+
+
+let tasks = JSON.parse(localStorage.getItem("taskflowTasks")) || [];
+
+let currentFilter = "all";
+
+
+function saveTasks() {
+    localStorage.setItem(
+        "taskflowTasks",
+        JSON.stringify(tasks)
+    );
+}
+
+
+function formatDate(date) {
+
+    if (!date) {
+        return "Без срока";
+    }
+
+    return new Date(date + "T00:00:00")
+        .toLocaleDateString("ru-RU", {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        });
+}
+
+
+function updateStats() {
+
+    const completed = tasks.filter(
+        task => task.completed
+    ).length;
+
+    const active = tasks.length - completed;
+
+    totalTasks.textContent = tasks.length;
+    activeCount.textContent = active;
+    completedCount.textContent = completed;
+}
+
+
+function getVisibleTasks() {
+
+    const searchValue = searchInput.value
+        .trim()
+        .toLowerCase();
+
+    return tasks.filter(task => {
+
+        const matchesSearch = task.title
+            .toLowerCase()
+            .includes(searchValue);
+
+        let matchesFilter = true;
+
+        if (currentFilter === "active") {
+            matchesFilter = !task.completed;
+        }
+
+        if (currentFilter === "completed") {
+            matchesFilter = task.completed;
+        }
+
+        return matchesSearch && matchesFilter;
+    });
+}
+
+
+function renderTasks() {
+
+    taskList.innerHTML = "";
+
+    const visibleTasks = getVisibleTasks();
+
+    if (visibleTasks.length === 0) {
+
+        taskList.innerHTML = `
+            <div class="empty-tasks">
+                Задачи не найдены
+            </div>
+        `;
+
+        updateStats();
+        return;
+    }
+
+
+    visibleTasks.forEach(task => {
+
+        const item = document.createElement("article");
+
+        item.className =
+            `task-item ${task.completed ? "completed" : ""}`;
+
+        item.innerHTML = `
+            <div class="task-main">
+
+                <input
+                    class="task-checkbox"
+                    type="checkbox"
+                    data-id="${task.id}"
+                    ${task.completed ? "checked" : ""}
+                    aria-label="Отметить задачу выполненной"
+                >
+
+                <div class="task-content">
+
+                    <h3 class="task-title">
+                        ${escapeHTML(task.title)}
+                    </h3>
+
+                    <p class="task-date">
+                        ${formatDate(task.date)}
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="task-actions">
+
+                <button
+                    type="button"
+                    class="edit-button"
+                    data-id="${task.id}"
+                >
+                    Изменить
+                </button>
+
+                <button
+                    type="button"
+                    class="delete-button"
+                    data-id="${task.id}"
+                >
+                    Удалить
+                </button>
+
+            </div>
+        `;
+
+        taskList.appendChild(item);
+    });
+
+    updateStats();
+}
+
+
+function escapeHTML(value) {
+
+    const element = document.createElement("div");
+
+    element.textContent = value;
+
+    return element.innerHTML;
+}
+
+
+function addTask(title, date) {
+
+    const task = {
+        id: Date.now(),
+        title,
+        date,
+        completed: false
+    };
+
+    tasks.unshift(task);
+
+    saveTasks();
+    renderTasks();
+}
+
+
+function toggleTask(taskId) {
+
+    const task = tasks.find(
+        task => task.id === taskId
+    );
+
+    if (!task) {
+        return;
+    }
+
+    task.completed = !task.completed;
+
+    saveTasks();
+    renderTasks();
+}
+
+
+function deleteTask(taskId) {
+
+    tasks = tasks.filter(
+        task => task.id !== taskId
+    );
+
+    saveTasks();
+    renderTasks();
+}
+
+
+function editTask(taskId) {
+
+    const task = tasks.find(
+        task => task.id === taskId
+    );
+
+    if (!task) {
+        return;
+    }
+
+    const newTitle = prompt(
+        "Измените название задачи:",
+        task.title
+    );
+
+    if (newTitle === null) {
+        return;
+    }
+
+    const cleanTitle = newTitle.trim();
+
+    if (!cleanTitle) {
+        return;
+    }
+
+    task.title = cleanTitle;
+
+    saveTasks();
+    renderTasks();
+}
+
+
+taskForm.addEventListener("submit", event => {
+
+    event.preventDefault();
+
+    const title = taskInput.value.trim();
+    const date = taskDate.value;
+
+    if (!title) {
+        return;
+    }
+
+    addTask(title, date);
+
+    taskForm.reset();
+    taskInput.focus();
+});
+
+
+taskList.addEventListener("click", event => {
+
+    const deleteButton =
+        event.target.closest(".delete-button");
+
+    const editButton =
+        event.target.closest(".edit-button");
+
+
+    if (deleteButton) {
+
+        const taskId = Number(
+            deleteButton.dataset.id
+        );
+
+        deleteTask(taskId);
+        return;
+    }
+
+
+    if (editButton) {
+
+        const taskId = Number(
+            editButton.dataset.id
+        );
+
+        editTask(taskId);
+    }
+});
+
+
+taskList.addEventListener("change", event => {
+
+    const checkbox =
+        event.target.closest(".task-checkbox");
+
+    if (!checkbox) {
+        return;
+    }
+
+    const taskId = Number(
+        checkbox.dataset.id
+    );
+
+    toggleTask(taskId);
+});
+
+
+searchInput.addEventListener("input", () => {
+    renderTasks();
+});
+
+
+filters.addEventListener("click", event => {
+
+    const button =
+        event.target.closest(".filter-button");
+
+    if (!button) {
+        return;
+    }
+
+    currentFilter = button.dataset.filter;
+
+    document
+        .querySelectorAll(".filter-button")
+        .forEach(item => {
+            item.classList.remove("active");
+        });
+
+    button.classList.add("active");
+
+    renderTasks();
+});
+
+
+clearCompleted.addEventListener("click", () => {
+
+    tasks = tasks.filter(
+        task => !task.completed
+    );
+
+    saveTasks();
+    renderTasks();
+});
+
+
+renderTasks();
