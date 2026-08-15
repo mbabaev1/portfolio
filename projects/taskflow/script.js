@@ -350,22 +350,6 @@ taskList.addEventListener("click", event => {
 });
 
 
-taskList.addEventListener("change", event => {
-
-    const checkbox =
-        event.target.closest(".task-checkbox");
-
-    if (!checkbox) {
-        return;
-    }
-
-    const taskId = Number(
-        checkbox.dataset.id
-    );
-
-    toggleTask(taskId);
-});
-
 
 searchInput.addEventListener("input", () => {
     renderTasks();
