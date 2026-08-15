@@ -19,6 +19,7 @@ const locationButton = document.querySelector("#locationButton");
 
 const currentWeatherIcon = document.querySelector("#currentWeatherIcon");
 
+const clearRecent = document.querySelector("#clearRecent");
 const recentSearches = document.querySelector("#recentSearches");
 const recentCities = document.querySelector("#recentCities");
 
@@ -383,6 +384,15 @@ locationButton.addEventListener("click", () => {
             status.className = "status error";
         }
     );
+});
+
+clearRecent.addEventListener("click", () => {
+
+    recentCityList = [];
+
+    localStorage.removeItem("recentCities");
+
+    renderRecentCities();
 });
 
 renderRecentCities();
