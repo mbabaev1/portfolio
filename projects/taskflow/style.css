@@ -535,3 +535,17 @@ button {
 .sort-select:focus {
     border-color: #3b82f6;
 }
+
+.task-form select {
+    padding: 14px 16px;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    outline: none;
+    background: #1e293b;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.task-form select:focus {
+    border-color: #3b82f6;
+}
