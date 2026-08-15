@@ -1,1 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TaskFlow | Менеджер задач</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="task-app">
+
+        <section class="task-panel">
+
+            <header class="task-header">
+
+                <div>
+                    <p class="eyebrow">МЕНЕДЖЕР ЗАДАЧ</p>
+                    <h1>TaskFlow</h1>
+                </div>
+
+                <div class="task-counter">
+                    <span id="totalTasks">0</span>
+                    задач
+                </div>
+
+            </header>
+
+
+            <form class="task-form" id="taskForm">
+
+                <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="Добавить новую задачу..."
+                    autocomplete="off"
+                    required
+                >
+
+                <input
+                    type="date"
+                    id="taskDate"
+                >
+
+                <button type="submit">
+                    Добавить
+                </button>
+
+            </form>
+
+
+            <section class="task-tools">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Поиск задач..."
+                    autocomplete="off"
+                >
+
+                <div class="filters" id="filters">
+
+                    <button
+                        type="button"
+                        class="filter-button active"
+                        data-filter="all"
+                    >
+                        Все
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-filter="active"
+                    >
+                        Активные
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-filter="completed"
+                    >
+                        Выполненные
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <section class="task-stats">
+
+                <div>
+                    <span>Активные</span>
+                    <strong id="activeCount">0</strong>
+                </div>
+
+                <div>
+                    <span>Выполненные</span>
+                    <strong id="completedCount">0</strong>
+                </div>
+
+            </section>
+
+
+            <section class="tasks-section">
+
+                <div class="tasks-header">
+
+                    <h2>Мои задачи</h2>
+
+                    <button
+                        type="button"
+                        id="clearCompleted"
+                    >
+                        Удалить выполненные
+                    </button>
+
+                </div>
+
+                <div class="task-list" id="taskList">
+                    <!-- Задачи создаст JavaScript -->
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
