@@ -33,40 +33,83 @@
 
             <form class="task-form" id="taskForm">
 
-                <input
-                    type="text"
-                    id="taskInput"
-                    placeholder="Добавить новую задачу..."
-                    autocomplete="off"
-                    required
-                >
+    <input
+        type="text"
+        id="taskInput"
+        placeholder="Добавить новую задачу..."
+        autocomplete="off"
+        required
+    >
 
-                <input
-                    type="date"
-                    id="taskDate"
-                >
+    <input
+        type="date"
+        id="taskDate"
+    >
 
-                <button type="submit">
-                    Добавить
-                </button>
+    <select id="taskPriority">
+        <option value="medium">Средний приоритет</option>
+        <option value="high">Высокий приоритет</option>
+        <option value="low">Низкий приоритет</option>
+    </select>
 
-            </form>
+    <button type="submit">
+        Добавить
+    </button>
 
-            <select id="taskPriority">
+</form>
 
-    <option value="medium">
-        Средний приоритет
-    </option>
 
-    <option value="high">
-        Высокий приоритет
-    </option>
+<section class="task-tools">
 
-    <option value="low">
-        Низкий приоритет
-    </option>
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Поиск задач..."
+        autocomplete="off"
+    >
 
-</select>
+    <select id="sortSelect" class="sort-select">
+        <option value="newest">Сначала новые</option>
+        <option value="oldest">Сначала старые</option>
+        <option value="deadline">По сроку</option>
+    </select>
+
+    <select id="priorityFilter" class="sort-select">
+        <option value="all">Все приоритеты</option>
+        <option value="high">Высокий</option>
+        <option value="medium">Средний</option>
+        <option value="low">Низкий</option>
+    </select>
+
+    <div class="filters" id="filters">
+
+        <button
+            type="button"
+            class="filter-button active"
+            data-filter="all"
+        >
+            Все
+        </button>
+
+        <button
+            type="button"
+            class="filter-button"
+            data-filter="active"
+        >
+            Активные
+        </button>
+
+        <button
+            type="button"
+            class="filter-button"
+            data-filter="completed"
+        >
+            Выполненные
+        </button>
+
+    </div>
+
+</section>
 
             <select id="priorityFilter" class="sort-select">
 
