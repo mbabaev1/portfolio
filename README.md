@@ -81,6 +81,28 @@
 
 [🌐 Demo](https://mbabaev1.github.io/portfolio/projects/shop/) · [💻 Исходный код](https://github.com/mbabaev1/portfolio/tree/main/projects/shop)
 
+### 🌤️ WeatherNow
+
+Приложение погоды с получением актуальных данных через API.
+
+**Возможности:**
+- поиск погоды по городу;
+- определение погоды по геолокации;
+- текущая температура и ощущаемая температура;
+- влажность и скорость ветра;
+- прогноз на 5 дней;
+- погодные иконки;
+- история последних городов;
+- сохранение истории через LocalStorage;
+- очистка истории поиска;
+- адаптивный интерфейс.
+
+**Технологии:** HTML, CSS, JavaScript, API, LocalStorage
+
+🌐 [Demo](https://mbabaev1.github.io/portfolio/projects/weather/)
+
+💻 [Исходный код](https://github.com/mbabaev1/portfolio/tree/main/projects/weather)
+
 ## 🎯 Цель
 
 Развиваться как Frontend-разработчик, создавать качественные адаптивные интерфейсы, работать над реальными проектами и постоянно улучшать свои навыки.
