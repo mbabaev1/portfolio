@@ -179,11 +179,16 @@ h1 {
 
 
 .projects-container {
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
     width: 100%;
-   
+}
+
+.project-card:last-child {
+    grid-column: 1 / -1;
+    width: calc(50% - 15px);
+    justify-self: center;
 }
 
 
@@ -343,7 +348,12 @@ h1 {
 
 
     .projects-container {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+    }
+    
+    .project-card:last-child {
+        grid-column: auto;
+        width: 100%;
     }
 
     .project-links {
